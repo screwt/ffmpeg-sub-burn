@@ -1,0 +1,12 @@
+*.pyc
+~*
+fabfile.py
+machines.py
+*.BAK
+*.bak
+fabfile.py
+machines.py
+OvhApi.py
+\#*.*\#
+*.*~
+.hg
