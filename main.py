@@ -1,15 +1,15 @@
 #!/usr/bin/python
 # coding: utf-8
 import os 
-import tkFileDialog
+from tkinter import filedialog
 import subprocess
-import Tkinter as tk
 from pprint import pprint
 from shutil import copyfile
-#top = tk.Tk()
-# Code to add widgets will go here...
+
 INITIALDIR = "D:/video/anime/martin_matin"
-FFMPEG_DIR = "G:/Program Files/ffmpeg-20160510-git-c8c14d0-win64-static/bin/ffmpeg.exe"
+FFMPEG_DIR = os.path.join("ffmpeg-20190328-f8fa8bb-win64-static",
+                          "bin",
+                          "ffmpeg.exe")
 
 def encode(ass, mp4):
     local_ass = os.path.basename(ass)
@@ -24,9 +24,9 @@ def encode(ass, mp4):
 
 def main():
     mp4 = None
-    ass = tkFileDialog.askopenfile(initialdir=INITIALDIR,  mode='rb',title='Choose a subtitle file',filetypes = (("subtitle","*.ass"),))
+    ass = filedialog.askopenfile(initialdir=INITIALDIR,  mode='rb',title='Choose a subtitle file',filetypes = (("subtitle","*.ass"),))
     if ass != None:
-        mp4 = tkFileDialog.askopenfile(initialdir=INITIALDIR, mode='rb',title='Choose a video file',filetypes = (("video","*.mp4"),))
+        mp4 = filedialog.askopenfile(initialdir=INITIALDIR, mode='rb',title='Choose a video file',filetypes = (("video","*.mp4"),))
 
     if ass != None and mp4 != None:
         encode(ass.name, mp4.name)
